@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXADON — Coming Soon</title>
+<meta name="description" content="NEXADON is coming soon.">
+<style>
+:root{
+  --gold:#CF9B37;
+  --gold2:#F2C75C;
+  --silver:#D7D9DE;
+  --muted:#9b9da3;
+  --bg:#050505;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:#fff;font-family:Inter,Arial,Helvetica,sans-serif}
+body{overflow:hidden}
+.scene{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 22% 28%,rgba(207,155,55,.14),transparent 26%),
+    radial-gradient(circle at 78% 72%,rgba(215,217,222,.09),transparent 28%),
+    linear-gradient(180deg,#09090a 0%,#050505 100%);
+}
+.scene::before{
+  content:"";
+  position:absolute;inset:0;z-index:-3;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.4),transparent 85%);
+}
+.grain{
+  position:absolute;inset:0;z-index:-2;opacity:.15;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.28) .6px,transparent .6px);
+  background-size:5px 5px;
+}
+.glow{
+  position:absolute;border-radius:50%;filter:blur(95px);opacity:.12;z-index:-2;
+  animation:drift 10s ease-in-out infinite alternate;
+}
+.g1{width:440px;height:440px;background:var(--gold);left:-120px;top:8%}
+.g2{width:420px;height:420px;background:var(--silver);right:-120px;bottom:2%;animation-delay:2s}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  100%{transform:translate3d(35px,-20px,0) scale(1.08)}
+}
+.shell{
+  width:min(1180px,92vw);
+  text-align:center;
+  position:relative;
+  padding:26px 0;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;
+  background:rgba(255,255,255,.03);backdrop-filter:blur(10px);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#c7c9ce;
+  opacity:0;transform:translateY(12px);animation:fadeUp .8s ease .2s forwards;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--gold2);
+  box-shadow:0 0 16px rgba(242,199,92,.9);
+  animation:pulse 1.8s ease-in-out infinite;
+}
+.logo-wrap{
+  width:min(1040px,94vw);
+  margin:28px auto 14px;
+  position:relative;
+  opacity:0;transform:translateY(22px) scale(.985);
+  animation:logoIn 1.2s cubic-bezier(.2,.7,.2,1) .45s forwards;
+}
+.logo-wrap::after{
+  content:"";
+  position:absolute;left:10%;right:10%;bottom:2px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(207,155,55,.7),rgba(215,217,222,.55),transparent);
+  box-shadow:0 0 22px rgba(207,155,55,.22);
+}
+.logo{
+  display:block;width:100%;height:auto;
+  border-radius:18px;
+  filter:drop-shadow(0 24px 45px rgba(0,0,0,.75));
+  animation:floatLogo 5.5s ease-in-out 1.7s infinite;
+}
+h1{
+  margin:18px 0 8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(40px,5.5vw,76px);
+  font-weight:500;line-height:1;letter-spacing:-.025em;
+  opacity:0;transform:translateY(16px);animation:fadeUp .9s ease .8s forwards;
+}
+h1 .accent{
+  background:linear-gradient(90deg,#a7771e,#FFE39A 35%,#CF9B37 70%,#f1c760);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lead{
+  max-width:760px;margin:0 auto;color:var(--muted);
+  font-size:clamp(15px,1.45vw,18px);line-height:1.75;
+  opacity:0;transform:translateY(14px);animation:fadeUp .9s ease 1s forwards;
+}
+.line{
+  width:min(360px,68%);height:1px;margin:28px auto 18px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  opacity:0;animation:fade .9s ease 1.2s forwards;
+}
+.note{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c0c2c7;
+  opacity:0;animation:fade .9s ease 1.35s forwards;
+}
+.orbit{
+  position:absolute;
+  width:680px;height:680px;
+  border:1px solid rgba(255,255,255,.04);
+  border-radius:50%;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  z-index:-1;
+  animation:spin 22s linear infinite;
+}
+.orbit::before,.orbit::after{
+  content:"";position:absolute;border-radius:50%;
+  width:7px;height:7px;top:49%;
+  background:var(--gold2);box-shadow:0 0 18px rgba(242,199,92,.7);
+}
+.orbit::before{left:-3px}.orbit::after{right:-3px;background:var(--silver);box-shadow:0 0 18px rgba(215,217,222,.55)}
+.particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;background:#efc95f;
+  box-shadow:0 0 12px rgba(239,201,95,.65);
+  animation:particle 6s ease-in-out infinite;
+}
+.p1{left:14%;top:29%}.p2{right:15%;top:24%;animation-delay:1.2s}.p3{left:24%;bottom:18%;animation-delay:2.3s}
+.p4{right:28%;bottom:16%;animation-delay:.7s}.p5{left:48%;top:18%;animation-delay:1.8s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes logoIn{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fade{to{opacity:1}}
+@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes particle{
+  0%,100%{transform:translateY(0) scale(.8);opacity:.2}
+  50%{transform:translateY(-20px) scale(1.3);opacity:1}
+}
+.bottom{
+  position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+  color:#6f7278;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  opacity:0;animation:fade .9s ease 1.55s forwards;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  body{overflow:auto}
+  .scene{min-height:100svh;padding:26px 0 64px}
+  .badge{font-size:9px;letter-spacing:.13em}
+  .logo-wrap{margin-top:20px}
+  .logo{border-radius:12px}
+  .orbit{width:430px;height:430px}
+  .bottom{bottom:14px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<section class="scene">
+  <div class="grain"></div>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="orbit"></div>
+
+  <span class="particle p1"></span>
+  <span class="particle p2"></span>
+  <span class="particle p3"></span>
+  <span class="particle p4"></span>
+  <span class="particle p5"></span>
+
+  <div class="shell">
+    <div class="badge"><span class="badge-dot"></span>A New Era Is Taking Shape</div>
+
+    <div class="logo-wrap">
+      <img src="nexadon-logo.png" alt="NEXADON" class="logo">
+    </div>
+
+    <h1>Something <span class="accent">Exceptional</span> Is Coming.</h1>
+    <p class="lead">
+      A refined digital experience built around ambition, growth and innovation.
+      NEXADON will be unveiled soon.
+    </p>
+
+    <div class="line"></div>
+    <div class="note">Stay tuned for the reveal</div>
+  </div>
+
+  <div class="bottom">© 2026 NEXADON · All Rights Reserved</div>
+</section>
+</body>
+</html>
