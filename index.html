@@ -962,11 +962,11 @@
       const seg=Math.max(40, Math.floor((x1-x0)/14));
       // horizontal gradient: transparent -> gold -> soft green
       const grad=ctx.createLinearGradient(x0,0,x1,0);
-      grad.addColorStop(0,'rgba(32,111,93,0)');
-      grad.addColorStop(0.15,'rgba(32,111,93,.45)');
-      grad.addColorStop(0.55,'rgba(74,157,129,.8)');
-      grad.addColorStop(0.85,'rgba(116,190,149,.5)');
-      grad.addColorStop(1,'rgba(116,190,149,0)');
+      grad.addColorStop(0,'rgba(20,74,60,0)');
+      grad.addColorStop(0.15,'rgba(20,74,60,.5)');
+      grad.addColorStop(0.55,'rgba(48,110,88,.85)');
+      grad.addColorStop(0.85,'rgba(82,140,108,.55)');
+      grad.addColorStop(1,'rgba(82,140,108,0)');
       ctx.strokeStyle=grad;ctx.lineWidth=1;ctx.lineJoin='round';
       for(let i=0;i<LINES;i++){
         const u=i/(LINES-1);              // 0..1 across ribbon
