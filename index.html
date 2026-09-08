@@ -466,7 +466,9 @@
   }
   @media (max-width:820px){
     /* dedicated portrait artwork for narrow screens; blur + opacity inherited from the base rule */
-    body::before{background-image:url('assets/earth_mobile.png');background-size:cover;background-position:center}
+    /* translateZ + fixed height keep the layer from drifting while the mobile address bar shows/hides */
+    body::before{background-image:url('assets/earth_mobile.png');background-size:cover;background-position:center;
+      inset:-8px;bottom:auto;height:calc(100lvh + 16px);transform:translateZ(0);backface-visibility:hidden}
     .nav-links,.nav .btn{display:none}
     .burger{display:block}
     section{padding:70px 0}
